@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="hero index-bg">
+  <h1 class="hero-title">Student Applications</h1>
+</div>
+
+<div class="card p-4 slide-up">
+<table class="table table-hover">
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Course</th>
+  <th>Status</th>
+  <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for app in applications %}
+<tr>
+  <td>{{ app.first_name }} {{ app.last_name }}</td>
+  <td>{{ app.email }}</td>
+  <td>{{ app.course }}</td>
+  <td><span class="badge badge-{{ app.status|lower }}">{{ app.status }}</span></td>
+  <td>
+    <a class="btn btn-warning btn-sm" href="/update/{{ app.id }}">Update</a>
+    <a class="btn btn-danger btn-sm" href="/delete/{{ app.id }}">Delete</a>
+  </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+{% endblock %}

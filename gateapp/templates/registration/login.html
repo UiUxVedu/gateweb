@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card p-4 col-md-4 mx-auto zoom-in">
+<h3 class="text-center mb-3">Admin Login</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary w-100">Login</button>
+</form>
+</div>
+
+{% endblock %}

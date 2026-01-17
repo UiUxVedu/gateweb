@@ -1,0 +1,63 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+}
+
+.navbar {
+    background: linear-gradient(90deg, #0d6efd, #084298);
+}
+
+.content-wrapper {
+    padding-top: 90px;
+}
+
+.hero {
+    height: 220px;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    margin-bottom: 30px;
+}
+
+.index-bg {
+    background: url("https://tse3.mm.bing.net/th/id/OIP.NxZq0UtfXOSNgeXqGlb-QQHaE7?pid=Api&P=0&h=180") center/cover;
+}
+
+.apply-bg {
+    background: url("https://static.vecteezy.com/system/resources/previews/011/004/881/large_2x/computer-chip-electronic-circuit-board-for-technology-and-finance-concept-and-education-for-future-vector.jpg") center/cover;
+}
+
+.hero-title {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.card {
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.badge-pending { background: orange; }
+.badge-accepted { background: green; }
+.badge-rejected { background: red; }
+
+/* Animations */
+.fade-in { animation: fade 0.8s ease-in; }
+.slide-up { animation: slideUp 0.6s ease; }
+.zoom-in { animation: zoom 0.5s ease; }
+
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes slideUp {
+    from {transform: translateY(20px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+}
+
+@keyframes zoom {
+    from {transform: scale(0.95); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}

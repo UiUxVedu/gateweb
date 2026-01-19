@@ -1,52 +1,58 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from .models import StudentApplication
-from .forms import StudentApplicationForm
+from django.shortcuts import render, redirect
+from .forms import ApplicationForm
+from .models import Application
+from django.contrib.auth.decorators import user_passes_test
 
-def index(request):
-    applications = StudentApplication.objects.all().order_by('-applied_at')
-    return render(request, 'index.html', {'applications': applications})
 
-def add(request):
+# HOME PAGE
+def home(request):
+    return render(request, 'home/home.html')
+
+# ADD APPLICATION
+def add_application(request):
     if request.method == 'POST':
-        form = StudentApplicationForm(request.POST)
+        form = ApplicationForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, "Application submitted successfully")
-            return redirect('/')
+            application = form.save()
+
+            # Redirect based on course
+            course = application.course
+
+            if course == 'CS':
+                return redirect('info_cs')
+            elif course == 'ENTC':
+                return redirect('info_entc')
+            elif course == 'EE':
+                return redirect('info_elec')
+            elif course == 'ME':
+                return redirect('info_mech')
+
+            return redirect('home')
+
     else:
-        form = StudentApplicationForm()
-    return render(request, 'add.html', {'form': form})
+        form = ApplicationForm()
 
-@login_required
-def update(request, id):
-    application = get_object_or_404(StudentApplication, id=id)
-    if request.method == 'POST':
-        application.status = request.POST.get('status')
-        application.save()
-        messages.success(request, "Status updated successfully")
-        return redirect('/')
-    return render(request, 'update.html', {'application': application})
+    return render(request, 'applications/add.html', {'form': form})
 
-@login_required
-def delete(request, id):
-    application = get_object_or_404(StudentApplication, id=id)
-    application.delete()
-    messages.success(request, "Application deleted")
-    return redirect('/')
+def is_superuser(user):
+    return user.is_superuser
 
-def filter_details(request):
-    applications = StudentApplication.objects.all()
-    course = request.GET.get('course')
-    status = request.GET.get('status')
-    country = request.GET.get('country')
+@user_passes_test(is_superuser)
+def application_list(request):
+    applications = Application.objects.all().order_by('-created_at')
+    return render(request, 'applications/list.html', {
+        'applications': applications
+    })
 
-    if course:
-        applications = applications.filter(course=course)
-    if status:
-        applications = applications.filter(status=status)
-    if country:
-        applications = applications.filter(country__icontains=country)
+# INFO PAGES
+def info_cs(request):
+    return render(request, 'info/info_cs.html')
 
-    return render(request, 'filter_details.html', {'applications': applications})
+def info_entc(request):
+    return render(request, 'info/info_entc.html')
+
+def info_elec(request):
+    return render(request, 'info/info_elec.html')
+
+def info_mech(request):
+    return render(request, 'info/info_mech.html')

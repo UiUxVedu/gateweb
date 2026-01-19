@@ -1,0 +1,55 @@
+<nav class="col-md-2 d-none d-md-block bg-light sidebar border-end">
+  <div class="position-sticky pt-4">
+    <ul class="nav flex-column gap-2">
+
+      <li class="nav-item">
+        <a class="nav-link fw-semibold" href="{% url 'home' %}">
+          🏠 Home
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link fw-semibold" href="{% url 'apply' %}">
+          📝 Apply for Coaching
+        </a>
+      </li>
+
+      <hr>
+
+      <li class="nav-item text-muted px-3">
+        Info Pages
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'info_cs' %}">💻 CS Guidance</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'info_entc' %}">📡 ENTC Guidance</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'info_elec' %}">⚡ Electrical Guidance</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'info_mech' %}">🛠 Mechanical Guidance</a>
+      </li>
+
+      {% if user.is_superuser %}
+      <hr>
+
+      <li class="nav-item fw-bold text-muted px-3">
+        Admin Panel
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-danger fw-bold" href="{% url 'application_list' %}">
+          📊 View Applications
+        </a>
+      </li>
+      {% endif %}
+      
+    </ul>
+  </div>
+</nav>

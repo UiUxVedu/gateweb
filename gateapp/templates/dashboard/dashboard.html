@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="card p-3">Total: {{ total }}</div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-3 bg-warning">Pending: {{ pending }}</div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-3 bg-success text-white">Approved: {{ approved }}</div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-3 bg-danger text-white">Rejected: {{ rejected }}</div>
+  </div>
+</div>
+
+<hr>
+
+<h4>Course-wise Applications</h4>
+<ul>
+{% for c in courses %}
+  <li>{{ c.course }} : {{ c.count }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

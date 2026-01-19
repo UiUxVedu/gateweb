@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Submitted Applications</h3>
+
+<table class="table table-bordered">
+<tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Course</th>
+</tr>
+
+{% for app in applications %}
+<tr>
+  <td>{{ app.first_name }} {{ app.last_name }}</td>
+  <td>{{ app.email }}</td>
+  <td>{{ app.get_course_display }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

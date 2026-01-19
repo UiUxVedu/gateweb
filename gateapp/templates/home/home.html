@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- HERO SECTION -->
+<div class="card p-5 shadow-sm text-center mb-4">
+    <h1 class="fw-bold text-primary">GATE Exam Coaching & Guidance</h1>
+    <p class="lead mt-3">
+        Complete guidance for GATE aspirants — eligibility, preparation strategy,
+        PSU opportunities & expert mentorship.
+    </p>
+
+    <a href="{% url 'apply' %}" class="btn btn-primary btn-lg mt-3">
+        Apply for GATE Coaching
+    </a>
+</div>
+
+<!-- ================= GATE 2026 INFORMATION SECTION ================= -->
+<div class="card p-4 shadow-sm mb-4 fade-in">
+    <h3 class="fw-bold text-secondary mb-3">📅 GATE 2026 – Official Information</h3>
+
+    <p class="mb-2">
+        <strong>Organized by:</strong> IIT Guwahati
+    </p>
+
+    <h5 class="mt-3">📆 Important Dates</h5>
+    <table class="table table-bordered table-sm mt-2">
+        <tr><th>Event</th><th>Date</th></tr>
+        <tr><td>Admit Card Release</td><td>January 13, 2026</td></tr>
+        <tr><td>GATE Exam</td><td>Feb 7, 8, 14 & 15, 2026</td></tr>
+        <tr><td>Result Declaration</td><td>March 19, 2026</td></tr>
+        <tr><td>Scorecard Download</td><td>March 27 – May 31, 2026</td></tr>
+        <tr><td>COAP / CCMT Counseling</td><td>From May 2026</td></tr>
+    </table>
+
+    <h5 class="mt-4">💰 Application Fee (Per Paper)</h5>
+    <ul>
+        <li><strong>SC / ST / PwD / Female:</strong> ₹1,000</li>
+        <li><strong>General / OBC:</strong> ₹2,000</li>
+        <li><strong>Late Fee:</strong> +₹500 (after Oct 7, 2025)</li>
+        <li><strong>Second Paper:</strong> Fee is doubled</li>
+    </ul>
+
+    <h5 class="mt-4">📑 Exam Structure</h5>
+    <ul>
+        <li>Total Questions: <strong>65</strong></li>
+        <li>Total Duration: <strong>180 minutes</strong></li>
+        <li>Total Marks: <strong>100</strong></li>
+    </ul>
+
+    <h6 class="mt-3">Marks Distribution</h6>
+    <ul>
+        <li>General Aptitude (GA): <strong>15 Marks</strong></li>
+        <li>Engineering Mathematics: <strong>13 Marks</strong></li>
+        <li>Core Subject: <strong>72 Marks</strong></li>
+    </ul>
+
+    <h6 class="mt-3">Question Types</h6>
+    <ul>
+        <li><strong>MCQ:</strong> Negative marking applies</li>
+        <li><strong>MSQ:</strong> No negative marking</li>
+        <li><strong>NAT:</strong> Numerical answer via virtual keypad</li>
+    </ul>
+
+    <h5 class="mt-4">🔄 Popular Two-Paper Combinations</h5>
+    <table class="table table-bordered table-sm">
+        <tr>
+            <th>Primary Paper</th>
+            <th>Permitted Secondary Papers</th>
+        </tr>
+        <tr>
+            <td>Computer Science (CS)</td>
+            <td>DA, MA, EC</td>
+        </tr>
+        <tr>
+            <td>Mechanical (ME)</td>
+            <td>AE, DA, IN, PI, XE</td>
+        </tr>
+        <tr>
+            <td>Electrical (EE)</td>
+            <td>DA, EC, IN, PH</td>
+        </tr>
+        <tr>
+            <td>Civil (CE)</td>
+            <td>AE, AR, ES, GE, NM, XE</td>
+        </tr>
+    </table>
+
+    <h5 class="mt-4">📊 Cutoff Understanding</h5>
+    <ul>
+        <li><strong>Qualifying Cutoff:</strong> 25–35 marks (Scorecard eligibility)</li>
+        <li><strong>Admission Cutoff:</strong> Depends on IIT / PSU</li>
+        <li><strong>Top IITs:</strong> GATE Score 750–900</li>
+        <li><strong>PSUs:</strong> Top 200 AIR</li>
+    </ul>
+
+    <h5 class="mt-4">💡 Pro Tips</h5>
+    <ul>
+        <li>Physical calculators are <strong>not allowed</strong></li>
+        <li>Practice using the official <strong>GATE virtual calculator</strong></li>
+        <li>GA + Math = <strong>28% guaranteed marks</strong> — focus early</li>
+    </ul>
+</div>
+
+<!-- ================= COURSE CARDS ================= -->
+<div class="row g-4">
+
+  <div class="col-md-3">
+    <div class="card p-3 text-center h-100">
+      <h5>Computer Science</h5>
+      <a href="{% url 'info_cs' %}" class="btn btn-outline-primary btn-sm mt-2">View</a>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card p-3 text-center h-100">
+      <h5>ENTC</h5>
+      <a href="{% url 'info_entc' %}" class="btn btn-outline-primary btn-sm mt-2">View</a>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card p-3 text-center h-100">
+      <h5>Electrical</h5>
+      <a href="{% url 'info_elec' %}" class="btn btn-outline-primary btn-sm mt-2">View</a>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card p-3 text-center h-100">
+      <h5>Mechanical</h5>
+      <a href="{% url 'info_mech' %}" class="btn btn-outline-primary btn-sm mt-2">View</a>
+    </div>
+  </div>
+  {% if user.is_superuser %}
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card p-3 shadow-sm border-start border-4 border-primary">
+                <h5 class="fw-bold text-primary">Admin Panel</h5>
+                <p class="text-muted mb-2">
+                    View all student applications submitted for GATE coaching.
+                </p>
+                <a href="{% url 'application_list' %}" class="btn btn-outline-primary btn-sm">
+                    View Applications
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+
+</div>
+
+{% endblock %}

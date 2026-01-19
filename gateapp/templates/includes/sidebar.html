@@ -4,13 +4,13 @@
 
       <li class="nav-item">
         <a class="nav-link fw-semibold" href="{% url 'home' %}">
-          🏠 Home
+           Home
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link fw-semibold" href="{% url 'apply' %}">
-          📝 Apply for Coaching
+           Apply for Coaching
         </a>
       </li>
 
@@ -21,19 +21,19 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'info_cs' %}">💻 CS Guidance</a>
+        <a class="nav-link" href="{% url 'info_cs' %}"> CS Guidance</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'info_entc' %}">📡 ENTC Guidance</a>
+        <a class="nav-link" href="{% url 'info_entc' %}"> ENTC Guidance</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'info_elec' %}">⚡ Electrical Guidance</a>
+        <a class="nav-link" href="{% url 'info_elec' %}"> Electrical Guidance</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'info_mech' %}">🛠 Mechanical Guidance</a>
+        <a class="nav-link" href="{% url 'info_mech' %}"> Mechanical Guidance</a>
       </li>
 
       {% if user.is_superuser %}
@@ -45,7 +45,7 @@
 
       <li class="nav-item">
         <a class="nav-link text-danger fw-bold" href="{% url 'application_list' %}">
-          📊 View Applications
+           View Applications
         </a>
       </li>
       {% endif %}

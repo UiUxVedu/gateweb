@@ -1,5 +1,5 @@
 
-## GateWeb – Django-Based GATE Preparation Web Application
+## Django-Based GATE Preparation Web Application [Build in 27 DEC 2025 to 02 JAN 2026]
 
 GateWeb is a Django-based web application developed to support GATE (Graduate Aptitude Test in Engineering) aspirants by providing a structured and scalable web platform.  
 This project demonstrates practical implementation of Django fundamentals and is suitable for academic projects, learning purposes, and portfolio showcase.
